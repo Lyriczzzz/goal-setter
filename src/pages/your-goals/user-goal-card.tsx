@@ -1,4 +1,4 @@
-import { GoalProps } from "./your-goals";
+import { GoalProps } from './your-goals'
 import {
   Card,
   CardContent,
@@ -6,7 +6,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from '@/components/ui/card'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -17,37 +17,37 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Delete } from "lucide-react";
-import { useSession } from "@/hooks/session";
-import { db } from "@/lib/firebase";
-import { doc, collection, getDocs, deleteDoc } from "firebase/firestore";
+} from '@/components/ui/alert-dialog'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Delete } from 'lucide-react'
+import { useSession } from '@/hooks/session'
+import { db } from '@/lib/firebase'
+import { doc, collection, getDocs, deleteDoc } from 'firebase/firestore'
 
 export function UserGoalCard({ goal }: { goal: GoalProps }) {
-  const { session } = useSession();
-  const tags = goal.tags.split(",").map((goal) => goal.trim());
+  const { session } = useSession()
+  const tags = goal.tags.split(',').map((goal) => goal.trim())
 
   async function handleDeleteGoal() {
     if (session) {
-      const userId = session.uid;
-      const userDocRef = doc(db, "goal", userId);
-      const goalsCollectionRef = collection(userDocRef, "goals");
+      const userId = session.uid
+      const userDocRef = doc(db, 'goal', userId)
+      const goalsCollectionRef = collection(userDocRef, 'goals')
 
       try {
-        const snapshot = await getDocs(goalsCollectionRef);
+        const snapshot = await getDocs(goalsCollectionRef)
         // Checks if the current goal belongs to the clicked document
         const selectedGoalDoc = snapshot.docs.find(
-          (doc) => doc.data().name === goal.name
-        );
+          (doc) => doc.data().name === goal.name,
+        )
         if (selectedGoalDoc) {
           // Deletes the document with the selected ID
-          await deleteDoc(doc(goalsCollectionRef, selectedGoalDoc.id));
-          window.location.reload();
+          await deleteDoc(doc(goalsCollectionRef, selectedGoalDoc.id))
+          window.location.reload()
         }
       } catch (error) {
-        console.error("Error fetching and deleting goal:", error);
+        console.error('Error fetching and deleting goal:', error)
       }
     }
   }
@@ -59,7 +59,7 @@ export function UserGoalCard({ goal }: { goal: GoalProps }) {
         <CardDescription>{goal.description}</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="flex gap-2 flex-wrap">
+        <div className="flex flex-wrap gap-2">
           {tags.map((tag, index) => (
             <Badge key={index} className="w-fit rounded-full py-1">
               {tag}
@@ -92,5 +92,5 @@ export function UserGoalCard({ goal }: { goal: GoalProps }) {
         </AlertDialog>
       </CardFooter>
     </Card>
-  );
+  )
 }

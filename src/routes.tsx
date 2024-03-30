@@ -1,31 +1,31 @@
-import { createBrowserRouter } from "react-router-dom";
-import { Layout } from "./pages/layout";
-import { Home } from "./pages/home";
-import { CreateGoal } from "./pages/create-goal/create-goal";
-import { YourGoals } from "./pages/your-goals/your-goals";
-import { SignIn } from "./pages/sign-in";
+import { createBrowserRouter } from 'react-router-dom'
+import { Layout } from './pages/layout'
+import { Home } from './pages/home'
+import { CreateGoal } from './pages/create-goal/create-goal'
+import { YourGoals } from './pages/your-goals/your-goals'
+import { SignIn } from './pages/sign-in'
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Layout />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <Home />,
       },
       {
-        path: "/create-goal",
+        path: '/create-goal',
         element: <CreateGoal />,
       },
       {
-        path: "/your-goals",
+        path: '/your-goals',
         element: <YourGoals />,
       },
       {
-        path: "/sign-in",
+        path: '/sign-in',
         element: <SignIn />,
       },
     ],
   },
-]);
+])

@@ -7,7 +7,7 @@ import {
   signInWithPopup,
   User,
   onAuthStateChanged,
-  signOut
+  signOut,
 } from 'firebase/auth'
 
 export function useSession() {
@@ -31,7 +31,7 @@ export function useSession() {
   }
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, currentUser => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setSession(currentUser)
     })
 

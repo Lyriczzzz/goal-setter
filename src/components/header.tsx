@@ -8,7 +8,7 @@ export function Header() {
   const isLoggedIn = !!session
 
   return (
-    <header className="border-b py-3 bg-gray-100 dark:bg-gray-900 relative z-10">
+    <header className="relative z-10 border-b bg-gray-100 py-3 dark:bg-gray-900">
       <div className="container mx-auto flex items-center justify-between">
         <Link to="/" className="font-medium hover:underline">
           GoalSetter
