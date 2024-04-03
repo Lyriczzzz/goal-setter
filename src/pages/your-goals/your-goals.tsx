@@ -5,6 +5,7 @@ import { doc, collection, getDocs } from 'firebase/firestore'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { UserGoalCard } from './user-goal-card'
+import { GoalIcon } from 'lucide-react'
 
 export type GoalProps = {
   name: string
@@ -38,7 +39,7 @@ export function YourGoals() {
   return (
     <main className="container mx-auto space-y-16">
       <div className="flex items-center justify-between">
-        <h1 className="text-4xl">Your Goals</h1>
+        <GoalIcon className="size-12" />
         <Button asChild>
           <Link to="/create-goal">Create Goal</Link>
         </Button>
