@@ -1,22 +1,15 @@
 import { Button } from '@/components/ui/button'
 import { useSession } from '@/hooks/session'
 import { db } from '@/lib/firebase'
-import { doc, collection, getDocs } from 'firebase/firestore'
+import { doc, collection, getDocs, DocumentData } from 'firebase/firestore'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { UserGoalCard } from './user-goal-card'
 import { GoalIcon } from 'lucide-react'
 
-export type GoalProps = {
-  name: string
-  description: string
-  tags: string
-}
-
 export function YourGoals() {
   const { session } = useSession()
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [goals, setGoals] = useState<any>([])
+  const [goals, setGoals] = useState<DocumentData>([])
 
   async function getGoals(userId: string) {
     const userDocRef = doc(db, 'goal', userId)
@@ -46,7 +39,7 @@ export function YourGoals() {
       </div>
 
       <div className="flex flex-wrap gap-8">
-        {goals.map((goal: GoalProps, index: number) => {
+        {goals.map((goal: DocumentData, index: number) => {
           return <UserGoalCard key={index} goal={goal} />
         })}
       </div>
