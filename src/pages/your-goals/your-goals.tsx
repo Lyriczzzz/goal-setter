@@ -5,7 +5,7 @@ import { doc, collection, getDocs, DocumentData } from 'firebase/firestore'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { UserGoalCard } from './user-goal-card'
-import { GoalIcon } from 'lucide-react'
+import { FolderPlus, GoalIcon } from 'lucide-react'
 
 export function YourGoals() {
   const { session } = useSession()
@@ -39,9 +39,21 @@ export function YourGoals() {
       </div>
 
       <div className="flex flex-wrap gap-8">
-        {goals.map((goal: DocumentData, index: number) => {
-          return <UserGoalCard key={index} goal={goal} />
-        })}
+        {goals.length > 0 ? (
+          goals.map((goal: DocumentData, index: number) => {
+            return <UserGoalCard key={index} goal={goal} />
+          })
+        ) : (
+          <div className="mx-auto flex max-w-4xl flex-col items-center justify-center gap-6">
+            <Link to="/create-goal">
+              <FolderPlus className="size-16" />
+            </Link>
+            <h1 className="text-center text-3xl md:text-4xl">
+              No goals have yet been created. Click the icon above to add a new
+              goal.
+            </h1>
+          </div>
+        )}
       </div>
     </main>
   )
