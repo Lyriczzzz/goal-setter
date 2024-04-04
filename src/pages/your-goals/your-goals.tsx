@@ -5,7 +5,7 @@ import { doc, collection, getDocs, DocumentData } from 'firebase/firestore'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { UserGoalCard } from './user-goal-card'
-import { FolderPlus } from 'lucide-react'
+import { ArrowRight, FolderPlus } from 'lucide-react'
 
 export function YourGoals() {
   const { session } = useSession()
@@ -39,8 +39,11 @@ export function YourGoals() {
           height="50"
           alt="goal tracker logo"
         />
-        <Button asChild>
-          <Link to="/create-goal">Create Goal</Link>
+        <Button variant="secondary" asChild>
+          <Link to="/create-goal">
+            <ArrowRight className="mr-2 size-4" />
+            Create Goal
+          </Link>
         </Button>
       </div>
 
