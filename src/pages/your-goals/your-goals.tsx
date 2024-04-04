@@ -5,7 +5,7 @@ import { doc, collection, getDocs, DocumentData } from 'firebase/firestore'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { UserGoalCard } from './user-goal-card'
-import { FolderPlus, GoalIcon } from 'lucide-react'
+import { FolderPlus } from 'lucide-react'
 
 export function YourGoals() {
   const { session } = useSession()
@@ -32,7 +32,13 @@ export function YourGoals() {
   return (
     <main className="container mx-auto space-y-16">
       <div className="flex items-center justify-between">
-        <GoalIcon className="size-12" />
+        <img
+          className="mb-8 inline-block rounded-full"
+          src="/OIG1.jfif"
+          width="50"
+          height="50"
+          alt="goal tracker logo"
+        />
         <Button asChild>
           <Link to="/create-goal">Create Goal</Link>
         </Button>
