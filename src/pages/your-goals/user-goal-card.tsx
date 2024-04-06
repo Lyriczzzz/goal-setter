@@ -1,4 +1,3 @@
-import { GoalProps } from './your-goals'
 import {
   Card,
   CardContent,
@@ -25,9 +24,15 @@ import { useSession } from '@/hooks/session'
 import { db } from '@/lib/firebase'
 import { doc, collection, getDocs, deleteDoc } from 'firebase/firestore'
 
+type GoalProps = {
+  name: string
+  description: string
+  tags: string
+}
+
 export function UserGoalCard({ goal }: { goal: GoalProps }) {
   const { session } = useSession()
-  const tags = goal.tags.split(',').map((goal) => goal.trim())
+  const tags = goal.tags.split(',').map((goal: string) => goal.trim())
 
   async function handleDeleteGoal() {
     if (session) {
@@ -60,7 +65,7 @@ export function UserGoalCard({ goal }: { goal: GoalProps }) {
       </CardHeader>
       <CardContent>
         <div className="flex flex-wrap gap-2">
-          {tags.map((tag, index) => (
+          {tags.map((tag: string, index: number) => (
             <Badge key={index} className="w-fit rounded-full py-1">
               {tag}
             </Badge>
