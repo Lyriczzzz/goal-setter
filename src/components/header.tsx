@@ -21,7 +21,7 @@ export function Header() {
             </Button>
           ) : (
             <Button variant="link" asChild>
-              <Link to="/sign-in">Sign In</Link>
+              <Link to="/login-form">Sign In</Link>
             </Button>
           )}
 

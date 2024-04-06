@@ -3,7 +3,7 @@ import { Layout } from './pages/layout'
 import { Home } from './pages/home'
 import { CreateGoal } from './pages/create-goal/create-goal'
 import { YourGoals } from './pages/your-goals/your-goals'
-import { SignIn } from './pages/sign-in'
+import { LoginForm } from './pages/login-form'
 
 export const router = createBrowserRouter([
   {
@@ -23,8 +23,8 @@ export const router = createBrowserRouter([
         element: <YourGoals />,
       },
       {
-        path: '/sign-in',
-        element: <SignIn />,
+        path: '/login-form',
+        element: <LoginForm />,
       },
     ],
   },
