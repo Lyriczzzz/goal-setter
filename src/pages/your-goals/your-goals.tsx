@@ -31,21 +31,12 @@ export function YourGoals() {
 
   return (
     <main className="container mx-auto space-y-16">
-      <div className="flex items-center justify-between">
-        <img
-          className="mb-8 inline-block rounded-full"
-          src="/OIG1.jfif"
-          width="50"
-          height="50"
-          alt="goal tracker logo"
-        />
-        <Button variant="secondary" asChild>
-          <Link to="/create-goal">
-            <ArrowRight className="mr-2 size-4" />
-            Create Goal
-          </Link>
-        </Button>
-      </div>
+      <Button variant="secondary" asChild>
+        <Link to="/create-goal">
+          <ArrowRight className="mr-2 size-4" />
+          Create Goal
+        </Link>
+      </Button>
 
       <div className="flex flex-wrap gap-8">
         {goals.length > 0 ? (
