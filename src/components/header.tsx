@@ -2,9 +2,10 @@ import { Link } from 'react-router-dom'
 import { ModeToggle } from './mode-toggle'
 import { Button } from './ui/button'
 import { useSession } from '@/hooks/session'
+import { AccountMenu } from './account-menu'
 
 export function Header() {
-  const { session, handleSignOut } = useSession()
+  const { session } = useSession()
   const isLoggedIn = !!session
 
   return (
@@ -16,9 +17,10 @@ export function Header() {
 
         <div className="flex items-center gap-4">
           {isLoggedIn ? (
-            <Button variant="link" onClick={handleSignOut}>
-              Sign Out
-            </Button>
+            <>
+              <AccountMenu />
+              <p>{session.displayName}</p>
+            </>
           ) : (
             <Button variant="link" asChild>
               <Link to="/login-form">Sign In</Link>
